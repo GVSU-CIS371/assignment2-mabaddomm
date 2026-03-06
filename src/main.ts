@@ -66,28 +66,92 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  syrupDiv.style.setProperty("--syrup-color", color);
+
   // TODO: implement this function
 }
 
 function setupSyrupListeners(): void {
+  const inputs = document.querySelectorAll('input[name="syrup"]');
   // TODO: implement this function
+
+  inputs.forEach((inputs) => {
+    const radio = inputs as HTMLInputElement;
+
+    radio.addEventListener("change", () => {
+      applySyrup(radio);
+    });
+
+    if (radio.checked) {
+      applySyrup(radio);
+    }
+  });
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
+  const inputs = document.querySelectorAll('input[name="cream"]');
+  // TODO: implement this function
+
+  inputs.forEach((inputs) => {
+    const radio = inputs as HTMLInputElement;
+
+    radio.addEventListener("change", () => {
+      applyCream(radio);
+    });
+
+    if (radio.checked) {
+      applyCream(radio);
+    }
+  });
   // TODO: implement this function
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
   // TODO: implement this function
+  const inputs = document.querySelectorAll('input[name="temperature"]');
+
+  inputs.forEach((inputs) => {
+    const radio = inputs as HTMLInputElement;
+
+    radio.addEventListener("change", () => {
+      applyTemperature(radio);
+    });
+
+    if (radio.checked) {
+      applyTemperature(radio);
+    }
+  });
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
+  const inputs = document.querySelectorAll('input[name="base"]');
   // TODO: implement this function
+
+  inputs.forEach((inputs) => {
+    const radio = inputs as HTMLInputElement;
+
+    radio.addEventListener("change", () => {
+      applyBase(radio);
+    });
+
+    if (radio.checked) {
+      applyBase(radio);
+    }
+  });
 }
 
 setupBaseListeners();
